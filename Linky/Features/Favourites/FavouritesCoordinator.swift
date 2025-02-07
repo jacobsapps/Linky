@@ -40,6 +40,16 @@ final class FavouritesCoordinator: Coordinator {
                 }
             }
         }
+//        Task { @MainActor in
+//            for await link in deepLink.stream(.favourites) {
+//                switch link {
+//                case .favourites:
+//                    navigate(to: .favourites)
+//                default:
+//                    break
+//                }
+//            }
+//        }
     }
     
     func navigate(to route: any Route) {

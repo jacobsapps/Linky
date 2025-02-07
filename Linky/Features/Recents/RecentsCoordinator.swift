@@ -13,6 +13,7 @@ final class RecentsCoordinator: Coordinator {
     
     enum RecentsRoute: Route {
         case recents
+        case mostRecent
     }
     
     weak var parent: Coordinator?
@@ -31,15 +32,32 @@ final class RecentsCoordinator: Coordinator {
     }
     
     func handleDeepLinks() {
-        Task { @MainActor in 
+        Task { @MainActor in
             await withTaskGroup(of: Void.self) { [deepLink, weak self] in
                 $0.addTask { @MainActor in
                     for await _ in deepLink.stream(.recents) {
                         self?.navigate(to: .recents)
                     }
                 }
+                $0.addTask { @MainActor in
+                    for await _ in deepLink.stream(.mostRecent) {
+                        self?.navigate(to: .mostRecent)
+                    }
+                }
             }
         }
+//        Task { @MainActor in
+//            for await link in deepLink.stream(.recents, .mostRecent) {
+//                switch link {
+//                case .recents:
+//                    navigate(to: .recents)
+//                case .mostRecent:
+//                    navigate(to: .mostRecent)
+//                default:
+//                    break
+//                }
+//            }
+//        }
     }
     
     func navigate(to route: Route) {
@@ -53,6 +71,10 @@ final class RecentsCoordinator: Coordinator {
         switch route {
         case .recents:
             break
+            
+        case .mostRecent:
+            let vc = SwiftUIViewController(with: MostRecentView())
+            navigationController.pushViewController(vc, animated: true)
         }
     }
 }

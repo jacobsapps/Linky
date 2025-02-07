@@ -26,10 +26,12 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         appCoordinator = AppCoordinator(window: window!)
         appCoordinator?.start()
         
-        if let urlContext = connectionOptions.urlContexts.first {
-            print("Cold launch handling URL: \(urlContext.url)")
-            deepLink.open(url: urlContext.url)
-        }
+//        if let urlContext = connectionOptions.urlContexts.first {
+//            deepLink.open(url: urlContext.url)
+//        }
+        
+        deepLink.open(url: URL(string: "com.jacob.Linky://mostrecent")!)
+//        deepLink.open(url: URL(string: "com.jacob.Linky://addcontact")!)
     }
     
     // Opening a URL while the app is active or backgrounded

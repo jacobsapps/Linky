@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		16E3DEEA2D4974D600867C34 /* AsyncAlgorithms in Frameworks */ = {isa = PBXBuildFile; productRef = 16E3DEE92D4974D600867C34 /* AsyncAlgorithms */; };
+		16CAB0B02D56605200918DD0 /* AsyncAlgorithms in Frameworks */ = {isa = PBXBuildFile; productRef = 16CAB0AF2D56605200918DD0 /* AsyncAlgorithms */; };
 		16E3DEEC2D49758000867C34 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 16E3DEEB2D49758000867C34 /* Factory */; };
 /* End PBXBuildFile section */
 
@@ -41,8 +41,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16E3DEEA2D4974D600867C34 /* AsyncAlgorithms in Frameworks */,
 				16E3DEEC2D49758000867C34 /* Factory in Frameworks */,
+				16CAB0B02D56605200918DD0 /* AsyncAlgorithms in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,8 +85,8 @@
 			);
 			name = Linky;
 			packageProductDependencies = (
-				16E3DEE92D4974D600867C34 /* AsyncAlgorithms */,
 				16E3DEEB2D49758000867C34 /* Factory */,
+				16CAB0AF2D56605200918DD0 /* AsyncAlgorithms */,
 			);
 			productName = Link3;
 			productReference = 168D68AE2D4839B2007F6501 /* Linky.app */;
@@ -118,7 +118,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				168D68D32D48CDD8007F6501 /* XCRemoteSwiftPackageReference "Factory" */,
-				168D68D42D48CDF0007F6501 /* XCRemoteSwiftPackageReference "swift-async-algorithms" */,
+				16CAB0AE2D56605200918DD0 /* XCRemoteSwiftPackageReference "swift-async-algorithms" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 168D68AF2D4839B2007F6501 /* Products */;
@@ -356,7 +356,7 @@
 				minimumVersion = 2.4.3;
 			};
 		};
-		168D68D42D48CDF0007F6501 /* XCRemoteSwiftPackageReference "swift-async-algorithms" */ = {
+		16CAB0AE2D56605200918DD0 /* XCRemoteSwiftPackageReference "swift-async-algorithms" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-async-algorithms.git";
 			requirement = {
@@ -367,9 +367,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		16E3DEE92D4974D600867C34 /* AsyncAlgorithms */ = {
+		16CAB0AF2D56605200918DD0 /* AsyncAlgorithms */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 168D68D42D48CDF0007F6501 /* XCRemoteSwiftPackageReference "swift-async-algorithms" */;
+			package = 16CAB0AE2D56605200918DD0 /* XCRemoteSwiftPackageReference "swift-async-algorithms" */;
 			productName = AsyncAlgorithms;
 		};
 		16E3DEEB2D49758000867C34 /* Factory */ = {

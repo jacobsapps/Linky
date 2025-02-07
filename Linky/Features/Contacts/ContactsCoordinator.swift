@@ -46,6 +46,18 @@ final class ContactsCoordinator: Coordinator {
                 }
             }
         }
+//        Task { @MainActor in
+//            for await link in deepLink.stream(.contacts, .addContact) {
+//                switch link {
+//                case .contacts:
+//                    navigate(to: .contacts)
+//                case .addContact:
+//                    navigate(to: .addContact)
+//                default:
+//                    break
+//                }
+//            }
+//        }
     }
     
     func navigate(to route: any Route) {
