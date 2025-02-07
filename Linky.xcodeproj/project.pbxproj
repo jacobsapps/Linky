@@ -6,27 +6,32 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		16E3DEEA2D4974D600867C34 /* AsyncAlgorithms in Frameworks */ = {isa = PBXBuildFile; productRef = 16E3DEE92D4974D600867C34 /* AsyncAlgorithms */; };
+		16E3DEEC2D49758000867C34 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 16E3DEEB2D49758000867C34 /* Factory */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
-		168D68AE2D4839B2007F6501 /* Link3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Link3.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		168D68AE2D4839B2007F6501 /* Linky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Linky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		168D68C02D4839B3007F6501 /* Exceptions for "Link3" folder in "Link3" target */ = {
+		168D68C02D4839B3007F6501 /* Exceptions for "Linky" folder in "Linky" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = 168D68AD2D4839B2007F6501 /* Link3 */;
+			target = 168D68AD2D4839B2007F6501 /* Linky */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		168D68B02D4839B2007F6501 /* Link3 */ = {
+		168D68B02D4839B2007F6501 /* Linky */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				168D68C02D4839B3007F6501 /* Exceptions for "Link3" folder in "Link3" target */,
+				168D68C02D4839B3007F6501 /* Exceptions for "Linky" folder in "Linky" target */,
 			);
-			path = Link3;
+			path = Linky;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -36,6 +41,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16E3DEEA2D4974D600867C34 /* AsyncAlgorithms in Frameworks */,
+				16E3DEEC2D49758000867C34 /* Factory in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,7 +52,7 @@
 		168D68A52D4839B2007F6501 = {
 			isa = PBXGroup;
 			children = (
-				168D68B02D4839B2007F6501 /* Link3 */,
+				168D68B02D4839B2007F6501 /* Linky */,
 				168D68AF2D4839B2007F6501 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -53,7 +60,7 @@
 		168D68AF2D4839B2007F6501 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				168D68AE2D4839B2007F6501 /* Link3.app */,
+				168D68AE2D4839B2007F6501 /* Linky.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -61,9 +68,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		168D68AD2D4839B2007F6501 /* Link3 */ = {
+		168D68AD2D4839B2007F6501 /* Linky */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 168D68C12D4839B3007F6501 /* Build configuration list for PBXNativeTarget "Link3" */;
+			buildConfigurationList = 168D68C12D4839B3007F6501 /* Build configuration list for PBXNativeTarget "Linky" */;
 			buildPhases = (
 				168D68AA2D4839B2007F6501 /* Sources */,
 				168D68AB2D4839B2007F6501 /* Frameworks */,
@@ -74,13 +81,15 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				168D68B02D4839B2007F6501 /* Link3 */,
+				168D68B02D4839B2007F6501 /* Linky */,
 			);
-			name = Link3;
+			name = Linky;
 			packageProductDependencies = (
+				16E3DEE92D4974D600867C34 /* AsyncAlgorithms */,
+				16E3DEEB2D49758000867C34 /* Factory */,
 			);
 			productName = Link3;
-			productReference = 168D68AE2D4839B2007F6501 /* Link3.app */;
+			productReference = 168D68AE2D4839B2007F6501 /* Linky.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -98,7 +107,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 168D68A92D4839B2007F6501 /* Build configuration list for PBXProject "Link3" */;
+			buildConfigurationList = 168D68A92D4839B2007F6501 /* Build configuration list for PBXProject "Linky" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -107,12 +116,16 @@
 			);
 			mainGroup = 168D68A52D4839B2007F6501;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				168D68D32D48CDD8007F6501 /* XCRemoteSwiftPackageReference "Factory" */,
+				168D68D42D48CDF0007F6501 /* XCRemoteSwiftPackageReference "swift-async-algorithms" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 168D68AF2D4839B2007F6501 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				168D68AD2D4839B2007F6501 /* Link3 */,
+				168D68AD2D4839B2007F6501 /* Linky */,
 			);
 		};
 /* End PBXProject section */
@@ -145,11 +158,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R8R7NKS9V5;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Link3/Info.plist;
+				INFOPLIST_FILE = Linky/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -157,7 +170,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.jacob.Link3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jacob.Linky;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -172,11 +185,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R8R7NKS9V5;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Link3/Info.plist;
+				INFOPLIST_FILE = Linky/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -184,7 +197,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.jacob.Link3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jacob.Linky;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -314,7 +327,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		168D68A92D4839B2007F6501 /* Build configuration list for PBXProject "Link3" */ = {
+		168D68A92D4839B2007F6501 /* Build configuration list for PBXProject "Linky" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				168D68C42D4839B3007F6501 /* Debug */,
@@ -323,7 +336,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		168D68C12D4839B3007F6501 /* Build configuration list for PBXNativeTarget "Link3" */ = {
+		168D68C12D4839B3007F6501 /* Build configuration list for PBXNativeTarget "Linky" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				168D68C22D4839B3007F6501 /* Debug */,
@@ -333,6 +346,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		168D68D32D48CDD8007F6501 /* XCRemoteSwiftPackageReference "Factory" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hmlongco/Factory";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.4.3;
+			};
+		};
+		168D68D42D48CDF0007F6501 /* XCRemoteSwiftPackageReference "swift-async-algorithms" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-async-algorithms.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		16E3DEE92D4974D600867C34 /* AsyncAlgorithms */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 168D68D42D48CDF0007F6501 /* XCRemoteSwiftPackageReference "swift-async-algorithms" */;
+			productName = AsyncAlgorithms;
+		};
+		16E3DEEB2D49758000867C34 /* Factory */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 168D68D32D48CDD8007F6501 /* XCRemoteSwiftPackageReference "Factory" */;
+			productName = Factory;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 168D68A62D4839B2007F6501 /* Project object */;
 }
