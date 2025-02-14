@@ -47,7 +47,7 @@ final class FavouritesCoordinator: Coordinator {
     }
     
     @MainActor
-    func navigate(to route: FavouritesRoute) {
+    private func navigate(to route: FavouritesRoute) {
         parent?.navigate(to: AppCoordinator.AppRoute.favourites)
         
         switch route {

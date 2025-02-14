@@ -6,7 +6,6 @@
 //
 
 import AsyncAlgorithms
-import Factory
 import Foundation
 
 public protocol DeepLinkHandler {
@@ -28,32 +27,12 @@ public enum DeepLink: String, CaseIterable, Sendable {
 }
 
 public final class DeepLinkHandlerImpl: DeepLinkHandler {
-    private let deepLinkChannel = AsyncChannel<DeepLink>()
     
     private let _favouritesStream = AsyncChannel<DeepLink>()
     private let _contactsStream = AsyncChannel<DeepLink>()
     private let _addContactStream = AsyncChannel<DeepLink>()
     private let _recentsStream = AsyncChannel<DeepLink>()
     private let _mostRecentStream = AsyncChannel<DeepLink>()
-    
-    public init() {
-        Task {
-            for try await link in deepLinkChannel {
-                switch link {
-                case .favourites:
-                    await _favouritesStream.send(link)
-                case .contacts:
-                    await _contactsStream.send(link)
-                case .addContact:
-                    await _addContactStream.send(link)
-                case .recents:
-                    await _recentsStream.send(link)
-                case .mostRecent:
-                    await _mostRecentStream.send(link)
-                }
-            }
-        }
-    }
     
     public func stream(_ link: DeepLink) -> AsyncChannel<DeepLink> {
         switch link {
@@ -73,7 +52,18 @@ public final class DeepLinkHandlerImpl: DeepLinkHandler {
     public func open(url: URL) async {
         guard let link = DeepLink.link(from: url) else { return }
         Task {
-            await deepLinkChannel.send(link)
+            switch link {
+            case .favourites:
+                await _favouritesStream.send(link)
+            case .contacts:
+                await _contactsStream.send(link)
+            case .addContact:
+                await _addContactStream.send(link)
+            case .recents:
+                await _recentsStream.send(link)
+            case .mostRecent:
+                await _mostRecentStream.send(link)
+            }
         }
     }
 }

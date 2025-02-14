@@ -52,7 +52,7 @@ final class ContactsCoordinator: Coordinator {
     }
     
     @MainActor
-    func navigate(to route: ContactsRoute) {
+    private func navigate(to route: ContactsRoute) {
 
         parent?.navigate(to: AppCoordinator.AppRoute.contacts)
 

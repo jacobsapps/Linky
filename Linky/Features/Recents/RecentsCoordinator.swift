@@ -52,7 +52,7 @@ final class RecentsCoordinator: Coordinator {
     }
     
     @MainActor
-    func navigate(to route: RecentsRoute) {
+    private func navigate(to route: RecentsRoute) {
         parent?.navigate(to: AppCoordinator.AppRoute.recents)
         switch route {
         case .recents:
