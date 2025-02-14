@@ -5,8 +5,9 @@
 //  Created by Jacob Bartlett on 28/01/2025.
 //
 
-import UIKit
+import AsyncAlgorithms
 import Factory
+import UIKit
 
 final class ContactsCoordinator: Coordinator {
     @Injected(\.deepLinkHandler) private var deepLink
@@ -22,7 +23,7 @@ final class ContactsCoordinator: Coordinator {
     init(navigationController: UINavigationController, parent: Coordinator?) {
         self.navigationController = navigationController
         self.parent = parent
-        handleDeepLinks()
+        Task { await handleDeepLinks() }
     }
     
     func start() {
@@ -31,33 +32,18 @@ final class ContactsCoordinator: Coordinator {
         navigationController.viewControllers = [vc]
     }
     
-    func handleDeepLinks() {
-        Task {
-            await withTaskGroup(of: Void.self) { [deepLink, weak self] in
-                $0.addTask { @MainActor in
-                    for await _ in deepLink.stream(.contacts) {
-                        self?.navigate(to: .contacts)
-                    }
-                }
-                $0.addTask { @MainActor in
-                    for await _ in deepLink.stream(.addContact) {
-                        self?.navigate(to: .addContact)
-                    }
-                }
+    func handleDeepLinks() async {
+        for await link in merge(deepLink.stream(.contacts),
+                                deepLink.stream(.addContact)) {
+            switch link {
+            case .contacts:
+                await navigate(to: .contacts)
+            case .addContact:
+                await navigate(to: .addContact)
+            default:
+                break
             }
         }
-//        Task { @MainActor in
-//            for await link in deepLink.stream(.contacts, .addContact) {
-//                switch link {
-//                case .contacts:
-//                    navigate(to: .contacts)
-//                case .addContact:
-//                    navigate(to: .addContact)
-//                default:
-//                    break
-//                }
-//            }
-//        }
     }
     
     func navigate(to route: any Route) {
@@ -65,9 +51,11 @@ final class ContactsCoordinator: Coordinator {
         navigate(to: route)
     }
     
+    @MainActor
     func navigate(to route: ContactsRoute) {
+
         parent?.navigate(to: AppCoordinator.AppRoute.contacts)
-        
+
         switch route {
         case .contacts:
             break

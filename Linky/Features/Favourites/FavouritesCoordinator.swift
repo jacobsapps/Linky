@@ -5,8 +5,8 @@
 //  Created by Jacob Bartlett on 28/01/2025.
 //
 
-import UIKit
 import Factory
+import UIKit
 
 final class FavouritesCoordinator: Coordinator {
     @Injected(\.deepLinkHandler) private var deepLink
@@ -21,7 +21,7 @@ final class FavouritesCoordinator: Coordinator {
     init(navigationController: UINavigationController, parent: Coordinator?) {
         self.navigationController = navigationController
         self.parent = parent
-        handleDeepLinks()
+        Task { await handleDeepLinks() }
     }
     
     func start() {
@@ -30,26 +30,15 @@ final class FavouritesCoordinator: Coordinator {
         navigationController.viewControllers = [vc]
     }
     
-    func handleDeepLinks() {
-        Task {
-            await withTaskGroup(of: Void.self) { [deepLink, weak self] in
-                $0.addTask { @MainActor in
-                    for await _ in deepLink.stream(.favourites) {
-                        self?.navigate(to: .favourites)
-                    }
-                }
+    func handleDeepLinks() async {
+        for await link in deepLink.stream(.favourites) {
+            switch link {
+            case .favourites:
+                await navigate(to: .favourites)
+            default:
+                break
             }
         }
-//        Task { @MainActor in
-//            for await link in deepLink.stream(.favourites) {
-//                switch link {
-//                case .favourites:
-//                    navigate(to: .favourites)
-//                default:
-//                    break
-//                }
-//            }
-//        }
     }
     
     func navigate(to route: any Route) {
@@ -57,6 +46,7 @@ final class FavouritesCoordinator: Coordinator {
         navigate(to: route)
     }
     
+    @MainActor
     func navigate(to route: FavouritesRoute) {
         parent?.navigate(to: AppCoordinator.AppRoute.favourites)
         

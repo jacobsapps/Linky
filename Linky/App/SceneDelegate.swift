@@ -26,23 +26,26 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         appCoordinator = AppCoordinator(window: window!)
         appCoordinator?.start()
         
-//        if let urlContext = connectionOptions.urlContexts.first {
-//            deepLink.open(url: urlContext.url)
-//        }
-        
-        deepLink.open(url: URL(string: "com.jacob.Linky://mostrecent")!)
-//        deepLink.open(url: URL(string: "com.jacob.Linky://addcontact")!)
+        if let urlContext = connectionOptions.urlContexts.first {
+            Task { await deepLink.open(url: urlContext.url) }
+        }
     }
     
     // Opening a URL while the app is active or backgrounded
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
         guard let urlContext = URLContexts.first else { return }
-        deepLink.open(url: urlContext.url)
+        
+        Task {
+            await deepLink.open(url: urlContext.url)
+        }
     }
     
     // Called when opening via universal links
     func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
         guard let url = userActivity.webpageURL else { return }
-        deepLink.open(url: url)
+        
+        Task {
+            await deepLink.open(url: url)
+        }
     }
 }

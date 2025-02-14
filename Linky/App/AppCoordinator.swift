@@ -62,5 +62,5 @@ final class AppCoordinator: Coordinator {
         }
     }
     
-    func handleDeepLinks() { }
+    func handleDeepLinks() async { }
 }

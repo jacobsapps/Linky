@@ -11,8 +11,8 @@ protocol Coordinator: AnyObject {
     var parent: Coordinator? { get }
     var navigationController: UINavigationController { get set }
     func start()
-    func navigate(to route: Route)
-    func handleDeepLinks()
+    @MainActor func navigate(to route: Route)
+    func handleDeepLinks() async
 }
 
 protocol Route {}

@@ -5,8 +5,9 @@
 //  Created by Jacob Bartlett on 28/01/2025.
 //
 
-import UIKit
+import AsyncAlgorithms
 import Factory
+import UIKit
 
 final class RecentsCoordinator: Coordinator {
     @Injected(\.deepLinkHandler) private var deepLink
@@ -22,7 +23,7 @@ final class RecentsCoordinator: Coordinator {
     init(navigationController: UINavigationController, parent: Coordinator?) {
         self.navigationController = navigationController
         self.parent = parent
-        handleDeepLinks()
+        Task { await handleDeepLinks() }
     }
     
     func start() {
@@ -31,33 +32,18 @@ final class RecentsCoordinator: Coordinator {
         navigationController.viewControllers = [vc]
     }
     
-    func handleDeepLinks() {
-        Task { @MainActor in
-            await withTaskGroup(of: Void.self) { [deepLink, weak self] in
-                $0.addTask { @MainActor in
-                    for await _ in deepLink.stream(.recents) {
-                        self?.navigate(to: .recents)
-                    }
-                }
-                $0.addTask { @MainActor in
-                    for await _ in deepLink.stream(.mostRecent) {
-                        self?.navigate(to: .mostRecent)
-                    }
-                }
+    func handleDeepLinks() async {
+        for await link in merge(deepLink.stream(.recents),
+                                deepLink.stream(.mostRecent)) {
+            switch link {
+            case .recents:
+                await navigate(to: .recents)
+            case .mostRecent:
+                await navigate(to: .mostRecent)
+            default:
+                break
             }
         }
-//        Task { @MainActor in
-//            for await link in deepLink.stream(.recents, .mostRecent) {
-//                switch link {
-//                case .recents:
-//                    navigate(to: .recents)
-//                case .mostRecent:
-//                    navigate(to: .mostRecent)
-//                default:
-//                    break
-//                }
-//            }
-//        }
     }
     
     func navigate(to route: Route) {
@@ -65,9 +51,9 @@ final class RecentsCoordinator: Coordinator {
         navigate(to: route)
     }
     
+    @MainActor
     func navigate(to route: RecentsRoute) {
         parent?.navigate(to: AppCoordinator.AppRoute.recents)
-        
         switch route {
         case .recents:
             break

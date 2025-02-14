@@ -20,5 +20,3 @@ struct MostRecentView: View {
         }
     }
 }
-
-
